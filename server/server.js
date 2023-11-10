@@ -11,3 +11,11 @@ const client = new stytch.Client({
         ? stytch.envs.test
         : stytch.envs.live
 })
+
+// middleware
+app.use(express.json());
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header('Access-Control-Allow-Headers', "Origin, X-Requested-With, Content-Type, Accept")
+    next()
+})
