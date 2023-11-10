@@ -4,6 +4,15 @@
             <h1 class="text-4xl mb-8 text-center font-black uppercase">
                 Password-less Login
             </h1>
+
+            <form @submit.prevent="" class="bg-gray-700 max-w-md mx-auto rounded p-4">
+                <label class="block mb-2">
+                    <span class="block text-gray-400 mb-2">
+                        Enter your email address
+                    </span>
+                    <input type="email" placeholder="e.g jondoe@example.com" />
+                </label>
+            </form>
         </section>
     </main>
 </template>
