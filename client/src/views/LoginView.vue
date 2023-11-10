@@ -6,28 +6,26 @@ const email = ref('');
 const isSubmitting = ref(false);
 
 const LoginOrCreate = async () => {
-  isSubmitting.value = true
-
-  if (!email.value) return alert("Please enter an email address")
-
-  const response = await fetch("http://localhost:5000/loginorcreate", {
-    method: "POST",
+  isSubmitting.value = true;
+  
+  const response = await fetch('http://localhost:5000/loginorcreate', {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      email: email.value
-    })
-  }).then(res => res.json())
+      email: email.value,
+    }),
+  }).then((res) => res.json());
 
   if (response.success) {
-    vm.$toast.success(response.message)
+    vm.$toast.success(response.message);
   } else {
-    vm.$toast.error(response.message)
+    vm.$toast.error(response.message);
   }
 
-  isSubmitting.value = false
-}
+  isSubmitting.value = false;
+};
 </script>
 
 <template>
@@ -52,8 +50,7 @@ const LoginOrCreate = async () => {
             type="submit"
             value="Login"
             :disabled="isSubmitting"
-            class="inline-block bg-emerald-400 text-lg text-gray-800 font-bold uppercase 
-                rounded px-4 py-2 cursor-pointer disabled:opacity-50"
+            class="inline-block bg-emerald-400 text-lg text-gray-800 font-bold uppercase rounded px-4 py-2 cursor-pointer disabled:opacity-50"
           />
         </div>
       </form>
